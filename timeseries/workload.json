@@ -1,0 +1,31 @@
+{% import "benchmark.helpers" as benchmark with context %}
+{
+  "version": 2,
+  "description": "Timeseries data",
+  "indices": [
+    {
+      "name": "timeseries",
+      "body": "index.json"
+    }
+  ],
+  "corpora": [
+    {
+      "name": "timeseries",
+      "base_url": "http://localhost:8000/timeseries.tar.gz",
+      "documents": [
+        {
+          "source-file": "timeseries.json",
+          "compressed-bytes": 53072970,
+          "document-count": 6246163,
+          "uncompressed-bytes": 5699261344
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {{ benchmark.collect(parts="operations/*.json") }}
+  ],
+  "test_procedures": [
+    {{ benchmark.collect(parts="test_procedures/*.json") }}
+  ]
+}
