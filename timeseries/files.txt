@@ -1,1 +1,1 @@
-timeseries.json.bz2
+timeseries.json

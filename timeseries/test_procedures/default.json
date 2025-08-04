@@ -5,8 +5,16 @@
   "schedule": [
     {
       "operation": {
+        "operation-type": "delete-index"
+      }
+    },
+    {
+      "operation": {
         "operation-type": "create-index"
       }
+    },
+    {
+      "operation": "ingest"
     }
   ]
 }

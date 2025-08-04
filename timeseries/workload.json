@@ -11,13 +11,13 @@
   "corpora": [
     {
       "name": "timeseries",
-      "base_url": "http://localhost:8000/timeseries.tar.gz",
+      "base-url": "http://localhost:8000",
       "documents": [
         {
-          "source-file": "timeseries.json",
-          "compressed-bytes": 53072970,
-          "document-count": 6246163,
-          "uncompressed-bytes": 5699261344
+          "source-file": "timeseries.json.tar.gz",
+          "compressed-bytes": 28016640,
+          "document-count": 11348078,
+          "uncompressed-bytes": 10991815632
         }
       ]
     }
@@ -29,3 +29,5 @@
     {{ benchmark.collect(parts="test_procedures/*.json") }}
   ]
 }
+
+

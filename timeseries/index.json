@@ -3,19 +3,19 @@
     "index.number_of_shards": {{number_of_shards | default(1)}},
     "index.number_of_replicas": {{number_of_replicas | default(0)}},
     "index.queries.cache.enabled": {{query_cache_enabled | default(false) | tojson}},
-    "index.requests.cache.enable": {{requests_cache_enabled | default(false) | tojson}}
-    "index.metrics.enabled": {{metrics_enabled | default(false) | tojson}},
+    "index.requests.cache.enable": {{requests_cache_enabled | default(false) | tojson}},
+    "index.metrics.enabled": {{metrics_enabled | default(true) | tojson}},
     "index.translog.durability": {{wal_durability | default("async") | tojson}},
     "index.translog.sync_interval": {{wal_sync_interval | default("1s") | tojson}},
     "refresh_interval": {{refresh_interval | default("1s") | tojson}}
 },
   "mappings": {
-    "_source": {
-      "enabled": {{ source_enabled | default(true) | tojson }}
-    },
     "properties": {
         "series_ref": {
           "type": "long"
+        },
+        "__labels__": {
+          "type": "keyword"
         },
         "labels": {
           "properties": {
@@ -28,6 +28,8 @@
           }
         },
         "samples": {
+          "type": "time_series_samples",
+          "doc_values": true,
           "properties": {
             "value": {
               "type": "float"
@@ -39,7 +41,5 @@
           }
         }
       }
-    },
-    "dynamic": "strict"
-  }
+    }
 }

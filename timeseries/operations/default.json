@@ -1,5 +1,5 @@
     {
-      "name": "create-index",
+      "name": "ingest",
       "operation-type": "bulk",
       "bulk-size": {{bulk_size | default(10000)}},
       "ingest-percentage": {{ingest_percentage | default(100)}}
